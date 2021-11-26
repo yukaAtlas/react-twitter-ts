@@ -7,6 +7,12 @@ import Menubar from 'src/components/organisms/Menubar'
 import { ResponsiveContext } from 'src/context'
 import theme from 'src/theme'
 
+const ProjectRoot = styled.div`
+  position: relative;
+  max-width: ${theme.breakpoints.values.lg}px;
+  margin: 0 auto;
+`
+
 const ChildrenRoot = styled.div`
   max-width: ${theme.breakpoints.values.sm}px;
   width: 100%;
@@ -29,11 +35,13 @@ const Layout = ({ children, title = 'react-twitter-ts' }: ILayoutProps): JSX.Ele
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <ResponsiveContext.Provider value={{ isMobile: isSmScreen }}>
-        <ChildrenRoot>
-          <Header />
-          {children}
-        </ChildrenRoot>
-        <Menubar />
+        <ProjectRoot>
+          <Menubar />
+          <ChildrenRoot>
+            <Header />
+            {children}
+          </ChildrenRoot>
+        </ProjectRoot>
       </ResponsiveContext.Provider>
     </>
   )

@@ -1,5 +1,5 @@
-import { styled } from '@mui/system'
 import React from 'react'
+import { styled } from '@mui/system'
 import { AppBar, Typography } from 'src/components/atoms'
 
 const StyledHeaderRoot = styled(AppBar)(({ theme }) => ({

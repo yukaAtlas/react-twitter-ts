@@ -10,10 +10,10 @@ interface ITypographyProps extends TypographyProps {
   fontWeight?: string | number
 }
 
-export const Typography: FC<ITypographyProps> = (props) => {
+export const Typography: FC<ITypographyProps> = ({ fontWeight, children, ...others }) => {
   return (
-    <StyledTypography fontWeight={props.fontWeight} {...props}>
-      {props.children}
+    <StyledTypography fontWeight={fontWeight} {...others}>
+      {children}
     </StyledTypography>
   )
 }

@@ -1,61 +1,70 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { HomeOutlined, EmailOutlined, NotificationsOutlined, SettingsOutlined } from '@mui/icons-material'
-import { BottomNavigation, BottomNavigationAction } from 'src/components/atoms'
+import { styled as MuiStyled } from '@mui/material/'
+import { Typography, IconButton } from 'src/components/atoms'
 import { ResponsiveContext } from 'src/context'
-import { styled } from '@mui/system'
-import { customThemeColor } from 'src/theme'
-import { ListItemIcon, ListItemText, MenuItem, MenuList } from '@mui/material'
+import theme, { customTheme } from 'src/theme'
+import styled from 'styled-components'
 
-const StyledMenubarRoot = styled(BottomNavigation)({
-  height: 80,
-  position: 'fixed',
-  bottom: 0,
-  width: '100vw',
-  borderTop: `2px solid ${customThemeColor.grey.light}`,
-})
+const StyledAside = styled.aside`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 2px solid ${customTheme.color.grey.light};
+  @media (min-width: ${theme.breakpoints.values.lg}px) {
+    position: absolute;
+    flex-direction: column;
+    align-items: baseline;
+    width: ${customTheme.sidebar.width};
+    top: ${theme.spacing(3)};
+    left: ${theme.spacing(3)};
+    bottom: unset;
+    margin-top: ${customTheme.header.height};
+    border-top: none;
+  }
+`
+
+const StyledIconButton = MuiStyled(IconButton)(({ theme }) => ({
+  gap: theme.spacing(2),
+}))
 
 const Menubar = () => {
   return (
     <ResponsiveContext.Consumer>
       {({ isMobile }) => {
-        if (isMobile) {
-          return (
-            <StyledMenubarRoot>
-              <BottomNavigationAction value="home" icon={<HomeOutlined color="primary" />} />
-              <BottomNavigationAction icon={<EmailOutlined color="primary" />} />
-              <BottomNavigationAction icon={<NotificationsOutlined color="primary" />} />
-              <BottomNavigationAction icon={<SettingsOutlined color="primary" />} />
-            </StyledMenubarRoot>
-          )
-        }
-
         return (
-          <MenuList>
-            <MenuItem>
-              <ListItemIcon>
+          <StyledAside>
+            <Link to="/">
+              <StyledIconButton>
                 <HomeOutlined />
-              </ListItemIcon>
-              <ListItemText>Home</ListItemText>
-            </MenuItem>
-            <MenuItem>
-              <ListItemIcon>
+                {!isMobile && <Typography>Home</Typography>}
+              </StyledIconButton>
+            </Link>
+            <Link to="/">
+              <StyledIconButton>
                 <EmailOutlined />
-              </ListItemIcon>
-              <ListItemText>Messenger</ListItemText>
-            </MenuItem>
-            <MenuItem>
-              <ListItemIcon>
+                {!isMobile && <Typography>Message</Typography>}
+              </StyledIconButton>
+            </Link>
+            <Link to="/">
+              <StyledIconButton>
                 <NotificationsOutlined />
-              </ListItemIcon>
-              <ListItemText>Notifications</ListItemText>
-            </MenuItem>
-            <MenuItem>
-              <ListItemIcon>
+                {!isMobile && <Typography>Notifications</Typography>}
+              </StyledIconButton>
+            </Link>
+            <Link to="/">
+              <StyledIconButton>
                 <SettingsOutlined />
-              </ListItemIcon>
-              <ListItemText>Notifications</ListItemText>
-            </MenuItem>
-          </MenuList>
+                {!isMobile && <Typography>Setting</Typography>}
+              </StyledIconButton>
+            </Link>
+          </StyledAside>
         )
       }}
     </ResponsiveContext.Consumer>

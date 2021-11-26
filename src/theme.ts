@@ -1,9 +1,17 @@
 import { createTheme } from '@mui/material'
 
-export const customThemeColor = {
-  grey: {
-    light: '#f5f8fa',
-    main: '#e6ecf1',
+export const customTheme = {
+  color: {
+    grey: {
+      light: '#f5f8fa',
+      main: '#e6ecf1',
+    },
+  },
+  header: {
+    height: '55px',
+  },
+  sidebar: {
+    width: '200px',
   },
 }
 
@@ -17,6 +25,15 @@ const theme = createTheme({
     text: {
       primary: '#000',
       secondary: '#fff',
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        a: {
+          textDecoration: 'none',
+        },
+      },
     },
   },
 })
