@@ -1,2 +1,6 @@
+export * from './AppBar'
 export * from './Button'
 export * from './CircularProgress'
+export * from './IconButton'
+export * from './Toolbar'
+export * from './Typography'
