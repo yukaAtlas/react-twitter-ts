@@ -5,6 +5,7 @@ export const customTheme = {
     grey: {
       light: '#f5f8fa',
       main: '#e6ecf1',
+      dark: '#bec3c9',
     },
   },
   header: {
@@ -21,6 +22,7 @@ const theme = createTheme({
       light: '#1ca0f299',
       main: '#1ca0f2cc',
       dark: '#1ca0f2',
+      contrastText: '#fff',
     },
     text: {
       primary: '#000',

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import { HomeOutlined, EmailOutlined, NotificationsOutlined, SettingsOutlined } from '@mui/icons-material'
 import { styled as MuiStyled } from '@mui/material/'
 import { Typography, IconButton } from 'src/components/atoms'
 import { ResponsiveContext } from 'src/context'
 import theme, { customTheme } from 'src/theme'
-import styled from 'styled-components'
 
 const StyledAside = styled.aside`
   position: fixed;
